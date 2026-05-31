@@ -1,233 +1,280 @@
-"""Python Basics: Your First Steps into Programming
-
-This module introduces the foundational concepts of Python programming, designed for absolute beginners.
-You will learn to write, execute, and understand simple Python scripts, building a solid base for further learning.
+"""
+Python Basics: The Foundation of Programming.
+This script introduces the absolute fundamental concepts necessary to start coding in Python,
+from variables and data types to basic control flow and function definitions.
 
 What you will learn:
-- How to declare variables and understand fundamental data types.
-- Basic arithmetic, string manipulation, and input/output operations.
-- Control flow structures like conditional statements and loops.
-- How to define and use functions to organize your code.
-- Essential data structures: lists, tuples, dictionaries, and sets.
-- Pythonic ways to write clean, efficient, and readable code.
-- Basic principles of object-oriented programming with a simple class.
+•  How to declare and use variables with various basic data types (numbers, strings, booleans).
+•  Understanding and applying fundamental operators (arithmetic, comparison, logical).
+•  Implementing conditional logic using `if`, `elif`, and `else` statements.
+•  Mastering looping constructs with `for` and `while` loops for repetitive tasks.
+•  Defining and calling functions to organize and reuse your code effectively.
+•  Working with Python's core collection types: lists, tuples, and dictionaries.
 
 Prerequisites:
-- A computer with Python 3 installed (preferably 3.8+).
-- A text editor (like VS Code, Sublime Text, or even Notepad).
-- Basic familiarity with your operating system's command line or terminal.
+•  Basic computer literacy (e.g., knowing how to save a file and run a command from a terminal).
+•  An installed Python 3 interpreter (version 3.8 or higher recommended).
+•  A text editor or Integrated Development Environment (IDE) to write and execute code.
 
 Key Concepts Covered:
-- Variables, Data Types (int, float, str, bool)
-- Operators (Arithmetic, Comparison, Logical, Assignment)
-- `print()`, `input()`
-- `if/elif/else` statements
-- `for` and `while` loops
-- Lists, Tuples, Dictionaries, Sets
-- Functions (definition, parameters, return values, type hints)
-- Error Handling (`try-except`)
-- Pythonic Iteration (`enumerate`, `zip`)
-- Classes and Objects
-- Generators
-- Basic Performance Measurement (`time` module)
+•  Variables and Assignment
+•  Integer, Float, String, Boolean Data Types
+•  Type Conversion (`int()`, `float()`, `str()`)
+•  Arithmetic Operators (+, -, *, /, //, %, **)
+•  Comparison Operators (==, !=, <, >, <=, >=)
+•  Logical Operators (and, or, not)
+•  f-strings for String Formatting
+•  Lists (Creation, Indexing, Slicing, Methods, Mutability)
+•  Tuples (Creation, Immutability)
+•  Dictionaries (Key-Value Pairs, Access, Modification)
+•  `if`, `elif`, `else` Conditional Statements
+•  `for` Loops with `range()` and Collection Iteration
+•  `while` Loops
+•  `break` and `continue` Statements
+•  Functions (Definition, Parameters, Return Values, Type Hints, Default Arguments)
+•  `None` Keyword
+•  Global vs. Local Scope
+•  List Comprehensions (basic)
+•  `enumerate()` for Indexed Iteration
+•  `zip()` for Parallel Iteration
+•  Sequence Unpacking
+•  Membership Testing (`in` Operator)
+•  Conditional Expressions (Ternary Operator)
+•  Basic Class Definition and Object Instantiation
+•  Measuring Execution Time (`time.time()`)
+•  Inspecting Memory Usage (`sys.getsizeof()`)
 """
 
+import time  # Used for measuring execution time in Section 7
+import sys   # Used for measuring memory usage in Section 7
+
 # ═══════════════════════════════════════════════════════════════
-# SECTION 1: Core Concept: Absolute Fundamentals
+# SECTION 1: Core Concept: Absolute Fundamentals of Python
 # ═══════════════════════════════════════════════════════════════
 
-def section_1_core_fundamentals() -> None:
+def section_1_core_concepts() -> None:
     """
-    Demonstrates basic variables, data types, operators, and I/O.
+    Demonstrates fundamental Python concepts: variables, basic data types, and arithmetic operations.
     """
-    print("\nSECTION 1: Core Concept: Absolute Fundamentals")
-    print("--------------------------------------------------")
+    print("--- SECTION 1: Absolute Fundamentals ---")
 
     # 1.1 Variables and Basic Data Types
-    # Variables are used to store data values. Python is dynamically typed.
-    # ℹ️  Note: Python automatically infers the data type based on the assigned value.
-    my_integer: int = 10                  # An integer number
-    my_float: float = 3.14                # A floating-point number (decimal)
-    my_string: str = "Hello, Python!"     # A string (sequence of characters)
-    my_boolean: bool = True               # A boolean (True or False)
+    # WHY: Variables are used to store data in memory, allowing you to refer to it by a name.
+    #      Python is dynamically typed, meaning you don't declare the type explicitly.
+    greeting_message: str = "Hello, Python Learners!"  # Declaring a string variable
+    student_count: int = 150                          # Declaring an integer variable
+    average_score: float = 87.5                       # Declaring a float variable
+    is_active_course: bool = True                     # Declaring a boolean variable
 
-    print(f"Integer: {my_integer}, Type: {type(my_integer)}")
-    # → Integer: 10, Type: <class 'int'>
-    print(f"Float: {my_float}, Type: {type(my_float)}")
-    # → Float: 3.14, Type: <class 'float'>
-    print(f"String: {my_string}, Type: {type(my_string)}")
-    # → String: Hello, Python!, Type: <class 'str'>
-    print(f"Boolean: {my_boolean}, Type: {type(my_boolean)}")
-    # → Boolean: True, Type: <class 'bool'>
+    print(f"Greeting: {greeting_message}")            # Displaying the string variable
+    # → Greeting: Hello, Python Learners!
+    print(f"Students enrolled: {student_count}")      # Displaying the integer variable
+    # → Students enrolled: 150
+    print(f"Average score: {average_score}")          # Displaying the float variable
+    # → Average score: 87.5
+    print(f"Course is active: {is_active_course}")    # Displaying the boolean variable
+    # → Course is active: True
 
     # 1.2 Basic Arithmetic Operators
-    # Perform mathematical calculations.
-    num_a: int = 20                       # First number for operations
-    num_b: int = 7                        # Second number for operations
+    # WHY: Operators perform operations on variables and values.
+    #      Arithmetic operators are fundamental for numerical calculations.
+    num1: int = 10                                    # First number
+    num2: int = 3                                     # Second number
 
-    addition: int = num_a + num_b         # Addition
-    subtraction: int = num_a - num_b      # Subtraction
-    multiplication: int = num_a * num_b   # Multiplication
-    division: float = num_a / num_b       # Float division (always returns float)
-    floor_division: int = num_a // num_b  # Floor division (discards fractional part)
-    modulus: int = num_a % num_b          # Modulus (remainder of division)
-    exponentiation: int = num_a ** 2      # Exponentiation (num_a to the power of 2)
+    sum_result: int = num1 + num2                     # Addition
+    print(f"{num1} + {num2} = {sum_result}")          # Displaying addition result
+    # → 10 + 3 = 13
 
-    print(f"\nArithmetic Operations with {num_a} and {num_b}:")
-    print(f"  Addition ({num_a} + {num_b}): {addition}")
-    # →   Addition (20 + 7): 27
-    print(f"  Subtraction ({num_a} - {num_b}): {subtraction}")
-    # →   Subtraction (20 - 7): 13
-    print(f"  Multiplication ({num_a} * {num_b}): {multiplication}")
-    # →   Multiplication (20 * 7): 140
-    print(f"  Division ({num_a} / {num_b}): {division:.2f}") # Format to 2 decimal places
-    # →   Division (20 / 7): 2.86
-    print(f"  Floor Division ({num_a} // {num_b}): {floor_division}")
-    # →   Floor Division (20 // 7): 2
-    print(f"  Modulus ({num_a} % {num_b}): {modulus}")
-    # →   Modulus (20 % 7): 6
-    print(f"  Exponentiation ({num_a} ** 2): {exponentiation}")
-    # →   Exponentiation (20 ** 2): 400
+    difference_result: int = num1 - num2              # Subtraction
+    print(f"{num1} - {num2} = {difference_result}")   # Displaying subtraction result
+    # → 10 - 3 = 7
 
-    # 1.3 String Concatenation and Formatting
-    # Combining strings and embedding variables.
-    greeting_part1: str = "Hello"         # First part of the greeting
-    greeting_part2: str = "World"         # Second part of the greeting
-    combined_greeting: str = greeting_part1 + ", " + greeting_part2 + "!" # Concatenate strings
-    print(f"\nString Concatenation: {combined_greeting}")
-    # → String Concatenation: Hello, World!
+    product_result: int = num1 * num2                 # Multiplication
+    print(f"{num1} * {num2} = {product_result}")      # Displaying multiplication result
+    # → 10 * 3 = 30
 
-    # 🔑 Key insight: f-strings are the preferred way for string formatting.
-    name: str = "Alice"                   # A name for a personalized message
-    age: int = 30                         # An age for a personalized message
-    formatted_message: str = f"My name is {name} and I am {age} years old." # Using an f-string
-    print(f"Formatted Message: {formatted_message}")
-    # → Formatted Message: My name is Alice and I am 30 years old.
+    division_result: float = num1 / num2              # Float division (always returns float)
+    print(f"{num1} / {num2} = {division_result}")     # Displaying float division result
+    # → 10 / 3 = 3.3333333333333335
 
-    # 1.4 Basic Input/Output (`input()` and `print()`)
-    # `input()` takes user input as a string.
-    # `print()` displays output to the console.
-    print("\n--- Interactive Input Example ---")
-    # ℹ️  Note: For demonstration, we'll use a hardcoded value instead of actual input()
-    #    to ensure the script runs non-interactively for testing.
-    # user_name = input("Please enter your name: ")
-    user_name: str = "Bob"                # Simulating user input for script execution
-    # user_age_str = input("Please enter your age: ")
-    user_age_str: str = "25"              # Simulating user input for script execution
+    integer_division_result: int = num1 // num2       # Integer division (discards fractional part)
+    print(f"{num1} // {num2} = {integer_division_result}") # Displaying integer division result
+    # → 10 // 3 = 3
 
-    # ⚠️ Common mistake: input() always returns a string. Convert to int if needed.
-    user_age: int = int(user_age_str)     # Convert string age to integer
+    modulo_result: int = num1 % num2                  # Modulo (remainder of division)
+    print(f"{num1} % {num2} = {modulo_result}")       # Displaying modulo result
+    # → 10 % 3 = 1
 
-    print(f"Hello, {user_name}! You are {user_age} years old.")
-    # → Hello, Bob! You are 25 years old.
-    print("--- End Interactive Input Example ---")
+    exponentiation_result: int = num1 ** num2         # Exponentiation (10 to the power of 3)
+    print(f"{num1} ** {num2} = {exponentiation_result}") # Displaying exponentiation result
+    # → 10 ** 3 = 1000
 
+    # 1.3 Type Conversion
+    # WHY: Sometimes you need to change a variable's data type, e.g., to perform arithmetic
+    #      on user input which is typically read as a string.
+    age_str: str = "30"                               # Age stored as a string
+    age_int: int = int(age_str)                       # Convert string to integer
+    print(f"Age as int: {age_int}, type: {type(age_int)}") # Display converted age and its type
+    # → Age as int: 30, type: <class 'int'>
+
+    price_str: str = "99.99"                          # Price stored as a string
+    price_float: float = float(price_str)             # Convert string to float
+    print(f"Price as float: {price_float}, type: {type(price_float)}") # Display converted price and its type
+    # → Price as float: 99.99, type: <class 'float'>
+
+    number_to_string: str = str(123)                  # Convert integer to string
+    print(f"Number to string: '{number_to_string}', type: {type(number_to_string)}") # Display converted number and its type
+    # → Number to string: '123', type: <class 'str'>
+    🔑 Key insight: Python's `type()` function is useful for inspecting the data type of any variable.
 
 # ═══════════════════════════════════════════════════════════════
 # SECTION 2: Syntax & Common Patterns: Everyday Usage
 # ═══════════════════════════════════════════════════════════════
 
-def section_2_syntax_common_patterns() -> None:
+def section_2_syntax_patterns() -> None:
     """
-    Covers conditional statements, loops, and basic data structures.
+    Covers common Python syntax for strings, collections (lists, tuples, dictionaries),
+    and basic control flow (if/else, for, while loops).
     """
-    print("\nSECTION 2: Syntax & Common Patterns: Everyday Usage")
-    print("--------------------------------------------------")
+    print("\n--- SECTION 2: Syntax & Common Patterns ---")
 
-    # 2.1 Conditional Statements (`if`, `elif`, `else`)
-    # Execute different code blocks based on conditions.
-    temperature: int = 25                 # Current temperature in Celsius
+    # 2.1 String Manipulation with f-strings
+    # WHY: f-strings provide a concise and readable way to embed expressions inside string literals.
+    name: str = "Alice"                               # User's name
+    age: int = 25                                     # User's age
+    city: str = "New York"                            # User's city
 
-    print(f"\nChecking temperature: {temperature}°C")
-    if temperature > 30:                  # Condition for hot weather
-        print("  It's a hot day!")
-    elif temperature > 20:                # Condition for warm weather (if not hot)
-        print("  It's a pleasant day.")
-    else:                                 # Default condition (if neither hot nor warm)
-        print("  It's a bit chilly.")
-    # →   It's a pleasant day.
+    # Using f-string for easy formatting
+    personal_info: str = f"Name: {name}, Age: {age}, City: {city}."
+    print(personal_info)                              # Display formatted string
+    # → Name: Alice, Age: 25, City: New York.
 
-    # Example 2: Checking a number's parity
-    number_to_check: int = 17             # An integer to check if it's even or odd
-    if number_to_check % 2 == 0:          # Check if remainder after division by 2 is 0
-        print(f"  {number_to_check} is an even number.")
-    else:                                 # If not even, it must be odd
-        print(f"  {number_to_check} is an odd number.")
-    # →   17 is an odd number.
+    # String methods
+    message: str = "  python programming is fun!  "   # A string with leading/trailing spaces and mixed case
+    print(f"Original message: '{message}'")           # Display original message
+    # → Original message: '  python programming is fun!  '
+    print(f"Uppercase: '{message.upper()}'")          # Convert to uppercase
+    # → Uppercase: '  PYTHON PROGRAMMING IS FUN!  '
+    print(f"Capitalized: '{message.capitalize()}'")    # Capitalize first letter
+    # → Capitalized: '  python programming is fun!  '
+    print(f"Stripped & Title Case: '{message.strip().title()}'") # Remove whitespace, then title case
+    # → Stripped & Title Case: 'Python Programming Is Fun!'
 
-    # 2.2 Loops (`for` and `while`)
-    # `for` loop: Iterate over a sequence (like a list, string, or range).
-    print("\n--- For Loop Examples ---")
-    fruits: list[str] = ["apple", "banana", "cherry"] # A list of fruits
-    print("Iterating through fruits:")
-    for fruit in fruits:                  # Loop through each item in the 'fruits' list
-        print(f"  I love {fruit}s!")
-    # →   I love apples!
-    # →   I love bananas!
-    # →   I love cherrys!
+    # 2.2 Lists: Ordered, Mutable Collections
+    # WHY: Lists are versatile for storing sequences of items that can be changed.
+    fruits: list[str] = ["apple", "banana", "cherry"] # Create a list of strings
+    print(f"Initial fruits: {fruits}")                # Display the list
+    # → Initial fruits: ['apple', 'banana', 'cherry']
 
-    # `range()` function generates a sequence of numbers.
-    print("Counting from 0 to 4:")
-    for i in range(5):                    # Loop from 0 up to (but not including) 5
-        print(f"  Count: {i}")
-    # →   Count: 0
-    # →   Count: 1
-    # →   Count: 2
-    # →   Count: 3
-    # →   Count: 4
+    fruits.append("date")                             # Add an item to the end
+    print(f"After append: {fruits}")                  # Display list after append
+    # → After append: ['apple', 'banana', 'cherry', 'date']
 
-    # `while` loop: Continues as long as its condition is true.
-    print("\n--- While Loop Example ---")
-    count: int = 0                        # Initialize count for the while loop
-    print("Counting up to 3:")
-    while count < 3:                      # Loop as long as count is less than 3
-        print(f"  Current count: {count}")
-        count += 1                        # Increment count to eventually stop the loop
-    # →   Current count: 0
-    # →   Current count: 1
-    # →   Current count: 2
+    fruits.insert(1, "grape")                         # Insert an item at a specific index
+    print(f"After insert: {fruits}")                  # Display list after insert
+    # → After insert: ['apple', 'grape', 'banana', 'cherry', 'date']
 
-    # 2.3 Basic Data Structures
-    # Lists: Ordered, mutable collections of items.
-    my_list: list[int] = [1, 2, 3, 4]     # Create a list of integers
-    my_list.append(5)                     # Add an element to the end of the list
-    print(f"\nList: {my_list}")
-    # → List: [1, 2, 3, 4, 5]
-    print(f"First element of list: {my_list[0]}") # Access by index (0-based)
-    # → First element of list: 1
-    print(f"Length of list: {len(my_list)}")
-    # → Length of list: 5
+    removed_fruit: str = fruits.pop(2)                # Remove and return item at index 2 ('banana')
+    print(f"After pop ('{removed_fruit}'): {fruits}") # Display list after pop
+    # → After pop ('banana'): ['apple', 'grape', 'cherry', 'date']
 
-    # Tuples: Ordered, immutable collections of items.
-    my_tuple: tuple[str, int, float] = ("apple", 1, 2.5) # Create a tuple
-    print(f"Tuple: {my_tuple}")
-    # → Tuple: ('apple', 1, 2.5)
-    print(f"Second element of tuple: {my_tuple[1]}")
-    # → Second element of tuple: 1
-    # ⚠️ Common mistake: my_tuple[0] = "orange" # This would raise a TypeError (tuples are immutable)
+    fruits[0] = "apricot"                             # Modify an item by index
+    print(f"After modifying first item: {fruits}")    # Display list after modification
+    # → After modifying first item: ['apricot', 'grape', 'cherry', 'date']
 
-    # Dictionaries: Unordered collections of key-value pairs.
-    my_dict: dict[str, int] = {"name": 1, "age": 2, "city": 3} # Create a dictionary
-    print(f"\nDictionary: {my_dict}")
-    # → Dictionary: {'name': 1, 'age': 2, 'city': 3}
-    print(f"Value for key 'name': {my_dict['name']}") # Access value by key
-    # → Value for key 'name': 1
-    my_dict["age"] = 31                   # Update value for an existing key
-    my_dict["job"] = 4                    # Add a new key-value pair
-    print(f"Updated dictionary: {my_dict}")
-    # → Updated dictionary: {'name': 1, 'age': 31, 'city': 3, 'job': 4}
+    # List slicing
+    sub_fruits: list[str] = fruits[1:3]               # Get elements from index 1 up to (but not including) 3
+    print(f"Sliced fruits (index 1 to 2): {sub_fruits}")
+    # → Sliced fruits (index 1 to 2): ['grape', 'cherry']
 
-    # Sets: Unordered collections of unique items.
-    my_set: set[int] = {1, 2, 3, 2, 1}    # Create a set; duplicates are automatically removed
-    print(f"\nSet: {my_set}")
-    # → Set: {1, 2, 3}
-    my_set.add(4)                         # Add an element to the set
-    my_set.add(2)                         # Adding an existing element has no effect
-    print(f"Updated set: {my_set}")
-    # → Updated set: {1, 2, 3, 4}
-    print(f"Is 3 in set? {3 in my_set}")  # Check for membership
-    # → Is 3 in set? True
+    # 2.3 Tuples: Ordered, Immutable Collections
+    # WHY: Tuples are used for collections of items that should not change after creation.
+    coordinates: tuple[int, int] = (10, 20)           # Create a tuple of integers
+    print(f"Coordinates: {coordinates}")              # Display the tuple
+    # → Coordinates: (10, 20)
+    print(f"First coordinate: {coordinates[0]}")      # Accessing elements by index
+    # → First coordinate: 10
 
+    # ⚠️ Common mistake: Trying to modify a tuple
+    # coordinates[0] = 5 # This would raise a TypeError: 'tuple' object does not support item assignment
+
+    # 2.4 Dictionaries: Unordered, Mutable Key-Value Pairs
+    # WHY: Dictionaries store data in key-value pairs, allowing efficient lookup by key.
+    person: dict[str, str | int] = {                  # Create a dictionary
+        "name": "Bob",
+        "age": 30,
+        "occupation": "Engineer"
+    }
+    print(f"Person details: {person}")                # Display the dictionary
+    # → Person details: {'name': 'Bob', 'age': 30, 'occupation': 'Engineer'}
+
+    print(f"Bob's age: {person['age']}")              # Accessing a value using its key
+    # → Bob's age: 30
+
+    person["age"] = 31                                # Update an existing value
+    person["city"] = "London"                         # Add a new key-value pair
+    print(f"Updated person details: {person}")        # Display updated dictionary
+    # → Updated person details: {'name': 'Bob', 'age': 31, 'occupation': 'Engineer', 'city': 'London'}
+
+    del person["occupation"]                          # Remove a key-value pair
+    print(f"Person after removing occupation: {person}")
+    # → Person after removing occupation: {'name': 'Bob', 'age': 31, 'city': 'London'}
+
+    # 2.5 Conditional Statements (if, elif, else)
+    # WHY: Control flow based on conditions, allowing your program to make decisions.
+    temperature: int = 28                             # Current temperature
+    if temperature > 30:                              # Check if temperature is greater than 30
+        print("It's a hot day!")
+    elif temperature > 20:                            # Else if temperature is greater than 20
+        print("It's a warm day.")
+    else:                                             # Otherwise
+        print("It's a cool day.")
+    # → It's a warm day.
+
+    # 2.6 Looping with 'for'
+    # WHY: Iterating over sequences (lists, strings, ranges) to perform actions repeatedly.
+    print("--- For Loop Examples ---")
+    fruits_list: list[str] = ["apple", "banana", "kiwi"] # A list of fruits
+    for fruit in fruits_list:                         # Iterate over each fruit in the list
+        print(f"I like {fruit}.")                     # Print a message for each fruit
+    # → I like apple.
+    # → I like banana.
+    # → I like kiwi.
+
+    # Looping with range()
+    # WHY: `range()` generates a sequence of numbers, useful for fixed-number iterations.
+    for i in range(3):                                # Loop 3 times (0, 1, 2)
+        print(f"Loop iteration {i}")                  # Print the current iteration number
+    # → Loop iteration 0
+    # → Loop iteration 1
+    # → Loop iteration 2
+
+    # 2.7 Looping with 'while'
+    # WHY: Repeating a block of code as long as a condition is true.
+    print("--- While Loop Example ---")
+    count: int = 0                                    # Initialize a counter
+    while count < 3:                                  # Loop as long as count is less than 3
+        print(f"Count is: {count}")                   # Print the current count
+        count += 1                                    # Increment the count (important to avoid infinite loops!)
+    # → Count is: 0
+    # → Count is: 1
+    # → Count is: 2
+
+    # Using break and continue in loops
+    print("--- Break and Continue Example ---")
+    for num in range(5):                              # Iterate from 0 to 4
+        if num == 2:                                  # If number is 2
+            print("Skipping 2 with continue")         # Indicate skipping
+            continue                                  # Skip the rest of the current iteration
+        if num == 4:                                  # If number is 4
+            print("Breaking loop at 4")               # Indicate breaking
+            break                                     # Exit the loop entirely
+        print(f"Processing number: {num}")            # Process number if not skipped or broken
+    # → Processing number: 0
+    # → Processing number: 1
+    # → Skipping 2 with continue
+    # → Processing number: 3
+    # → Breaking loop at 4
 
 # ═══════════════════════════════════════════════════════════════
 # SECTION 3: Edge Cases & Gotchas: What Beginners Always Get Wrong
@@ -235,106 +282,112 @@ def section_2_syntax_common_patterns() -> None:
 
 def section_3_edge_cases_gotchas() -> None:
     """
-    Highlights common beginner mistakes and how to avoid them.
+    Highlights common pitfalls and misunderstandings for beginners in Python.
     """
-    print("\nSECTION 3: Edge Cases & Gotchas: What Beginners Always Get Wrong")
-    print("--------------------------------------------------")
+    print("\n--- SECTION 3: Edge Cases & Gotchas ---")
 
-    # 3.1 Type Conversion Errors
-    # ⚠️ Common mistake: Trying to convert non-numeric string to int/float.
-    string_number: str = "123"            # A string containing only digits
-    string_text: str = "hello"            # A string containing non-digits
+    # 3.1 Type Mismatch Errors
+    # WHY: Python is strongly typed, so you cannot implicitly combine incompatible types.
+    # 🐛 Bug source: Trying to add a number and a string directly.
+    # print("Result: " + 5) # This would raise a TypeError: can only concatenate str (not "int") to str
+    print("Result: " + str(5))                        # ✅ Preferred: Convert number to string explicitly
+    # → Result: 5
 
-    print(f"\nConverting '{string_number}' to int: {int(string_number)}")
-    # → Converting '123' to int: 123
-    # print(int(string_text)) # This would raise a ValueError: invalid literal for int()
-    print("  Attempting to convert 'hello' to int would cause a ValueError.")
+    num_str: str = "10"
+    # total: int = num_str + 5 # This would raise a TypeError: can only concatenate str (not "int") to str
+    total: int = int(num_str) + 5                     # ✅ Preferred: Convert string to int for arithmetic
+    print(f"Converted sum: {total}")                  # Display the sum
+    # → Converted sum: 15
 
-    # 3.2 Mutable vs. Immutable Types (and Aliasing)
-    # Immutable types (int, float, str, tuple): Value cannot change after creation.
-    # Mutable types (list, dict, set): Value can be modified in place.
+    # 3.2 Mutable vs. Immutable Types (Lists vs. Tuples/Strings)
+    # WHY: Understanding mutability is crucial for avoiding unexpected side effects,
+    #      especially when passing objects to functions or assigning them.
+    # ℹ️ Note: Lists are mutable (can be changed), while tuples, strings, and numbers are immutable (cannot be changed after creation).
 
-    # Example: List aliasing (mutable type)
-    list_a: list[int] = [1, 2, 3]         # Original list
-    list_b: list[int] = list_a            # list_b now refers to the SAME list object as list_a
-    print(f"\nInitial lists: list_a={list_a}, list_b={list_b}")
-    # → Initial lists: list_a=[1, 2, 3], list_b=[1, 2, 3]
+    # Example with a mutable list
+    list_a: list[int] = [1, 2, 3]                     # Initial list
+    list_b: list[int] = list_a                        # list_b points to the SAME list object as list_a
+    list_b.append(4)                                  # Modifying list_b
+    print(f"List A after list B append: {list_a}")    # list_a is also changed!
+    # → List A after list B append: [1, 2, 3, 4]
 
-    list_b.append(4)                      # Modify list_b
-    print(f"After list_b.append(4): list_a={list_a}, list_b={list_b}")
-    # → After list_b.append(4): list_a=[1, 2, 3, 4], list_b=[1, 2, 3, 4]
-    # 🔑 Key insight: Both list_a and list_b point to the same list in memory.
-    #    Modifying one affects the other.
+    # To create an independent copy of a list:
+    list_c: list[int] = [5, 6, 7]                     # Initial list C
+    list_d: list[int] = list_c[:]                     # Create a SHALLOW copy using slicing
+    list_d.append(8)                                  # Modify list_d
+    print(f"List C after list D append: {list_c}")    # List C remains unchanged
+    # → List C after list D append: [5, 6, 7]
+    print(f"List D: {list_d}")                        # List D is independent
+    # → List D: [5, 6, 7, 8]
 
-    # ✅ Preferred/Pythonic: To create an independent copy of a list:
-    list_c: list[int] = [5, 6, 7]         # Another list
-    list_d: list[int] = list_c[:]         # Create a shallow copy using slicing
-    # Or: list_d = list_c.copy()           # Using the .copy() method
-    print(f"Initial independent lists: list_c={list_c}, list_d={list_d}")
-    # → Initial independent lists: list_c=[5, 6, 7], list_d=[5, 6, 7]
-
-    list_d.append(8)                      # Modify list_d
-    print(f"After list_d.append(8): list_c={list_c}, list_d={list_d}")
-    # → After list_d.append(8): list_c=[5, 6, 7], list_d=[5, 6, 7, 8]
-    # 🔑 Key insight: list_c remains unchanged because list_d is a separate object.
+    # Example with an immutable string
+    string_a: str = "hello"                           # Initial string
+    string_b: str = string_a                          # string_b points to the SAME string object
+    string_b = string_b + " world"                    # This creates a NEW string object for string_b
+    print(f"String A after string B change: {string_a}") # String A remains unchanged
+    # → String A after string B change: hello
+    print(f"String B: {string_b}")                    # String B is the new string
+    # → String B: hello world
 
     # 3.3 Integer Division vs. Float Division
-    # ⚠️ Common mistake: Forgetting the difference between / and //.
-    div_num_a: int = 10                   # Numerator
-    div_num_b: int = 3                    # Denominator
+    # WHY: `//` and `/` behave differently and choosing the wrong one can lead to incorrect results.
+    result_float_div: float = 10 / 3                  # Float division
+    print(f"10 / 3 = {result_float_div}")             # Result is a float
+    # → 10 / 3 = 3.3333333333333335
 
-    float_result: float = div_num_a / div_num_b # Standard division, always float
-    int_result: int = div_num_a // div_num_b # Floor division, truncates to integer
-    print(f"\nDivision of {div_num_a} by {div_num_b}:")
-    print(f"  Float division (/) result: {float_result}")
-    # →   Float division (/) result: 3.3333333333333335
-    print(f"  Integer division (//) result: {int_result}")
-    # →   Integer division (//) result: 3
+    result_int_div: int = 10 // 3                     # Integer division (floor division)
+    print(f"10 // 3 = {result_int_div}")              # Result is an integer (fractional part discarded)
+    # → 10 // 3 = 3
 
-    # 3.4 Equality (`==`) vs. Identity (`is`)
-    # `==` checks if values are equal.
-    # `is` checks if two variables refer to the *exact same object* in memory.
-    val1: list[int] = [1, 2, 3]           # First list
-    val2: list[int] = [1, 2, 3]           # Second list, same content but different object
-    val3: list[int] = val1                # val3 refers to the same object as val1
+    # 3.4 Variable Scope (Local vs. Global)
+    # WHY: Understanding where variables are accessible prevents `NameError` and unexpected behavior.
+    global_variable: str = "I am global"              # Declared in global scope
 
-    print(f"\nComparing lists: val1={val1}, val2={val2}, val3={val3}")
-    print(f"  val1 == val2: {val1 == val2}") # True, because their contents are the same
-    # →   val1 == val2: True
-    print(f"  val1 is val2: {val1 is val2}") # False, because they are different objects
-    # →   val1 is val2: False
-    print(f"  val1 is val3: {val1 is val3}") # True, because val3 points to the same object as val1
-    # →   val1 is val3: True
+    def scope_example() -> None:
+        local_variable: str = "I am local"            # Declared in local scope of function
+        print(f"Inside function: {local_variable}")   # Accessible: local_variable
+        # → Inside function: I am local
+        print(f"Inside function: {global_variable}")  # Accessible: global_variable
+        # → Inside function: I am global
 
-    # 3.5 Scope of Variables (Local vs. Global)
-    # Variables defined inside a function are local to that function.
-    # Variables defined outside functions are global.
-    global_var: str = "I am global"       # A global variable
+        # ⚠️ Common mistake: Trying to modify a global variable without `global` keyword.
+        # global_variable = "Modified locally" # This would create a NEW local variable named global_variable
+        # To actually modify the global variable:
+        # global global_variable
+        # global_variable = "Modified globally"
 
-    def my_scoped_function() -> None:
-        local_var: str = "I am local"     # A local variable
-        print(f"\nInside function:")
-        print(f"  Accessing global_var: {global_var}") # Can access global_var
-        # →   Accessing global_var: I am global
-        print(f"  Accessing local_var: {local_var}")   # Can access local_var
-        # →   Accessing local_var: I am local
+    scope_example()                                   # Call the function
+    print(f"Outside function: {global_variable}")     # Accessible: global_variable
+    # → Outside function: I am global
+    # print(local_variable) # This would raise a NameError: name 'local_variable' is not defined
+    #                       # local_variable only exists within scope_example()
 
-        # ⚠️ Common mistake: Modifying global variable without 'global' keyword.
-        # This creates a new local variable named `global_var` instead of modifying the global one.
-        # global_var = "I am a new local global_var"
-        # print(f"  (Inside) Attempted to modify global_var: {global_var}")
+    # 3.5 Off-by-one Errors in Indexing/Slicing
+    # WHY: Python uses 0-based indexing and exclusive end-points for slicing, which can be tricky.
+    data_list: list[str] = ["A", "B", "C", "D", "E"]  # A list of 5 elements
+    print(f"List: {data_list}")                       # Display the list
+    # → List: ['A', 'B', 'C', 'D', 'E']
+    print(f"First element: {data_list[0]}")           # Accessing the first element
+    # → First element: A
+    print(f"Last element: {data_list[len(data_list) - 1]}") # Accessing the last element explicitly
+    # → Last element: E
+    print(f"Last element (Pythonic): {data_list[-1]}") # ✅ Preferred: Use negative indexing for last element
+    # → Last element (Pythonic): E
 
-        # ✅ Preferred/Pythonic: If you MUST modify a global, use the 'global' keyword.
-        # Generally, avoid modifying global variables from within functions if possible.
-        nonlocal_var: str = "I am nonlocal" # A variable in an enclosing scope (not global)
+    # Slicing: [start:end] -> end index is EXCLUSIVE
+    print(f"Elements from index 1 to 3 (exclusive): {data_list[1:3]}") # Gets elements at index 1 and 2
+    # → Elements from index 1 to 3 (exclusive): ['B', 'C']
+    # If you want elements up to and including index 3, you need `data_list[1:4]`
 
-    my_scoped_function()
-    print(f"\nOutside function:")
-    print(f"  Accessing global_var: {global_var}")
-    # →   Accessing global_var: I am global
-    # print(local_var) # This would raise a NameError because local_var is not defined in global scope.
-    print("  Attempting to access local_var outside function would cause a NameError.")
-
+    # Range: range(start, stop) -> stop is EXCLUSIVE
+    print("Range from 0 to 2:")
+    for i in range(3):                                # Generates 0, 1, 2
+        print(f"  {i}")
+    # → Range from 0 to 2:
+    # →   0
+    # →   1
+    # →   2
+    # If you want 0 to N, use `range(N + 1)`
 
 # ═══════════════════════════════════════════════════════════════
 # SECTION 4: Intermediate Patterns: One Level Up From Basics
@@ -342,132 +395,45 @@ def section_3_edge_cases_gotchas() -> None:
 
 def section_4_intermediate_patterns() -> None:
     """
-    Introduces functions, default arguments, and basic error handling.
+    Introduces functions with type hints, default arguments, `None`, and simple list comprehensions.
     """
-    print("\nSECTION 4: Intermediate Patterns: One Level Up From Basics")
-    print("--------------------------------------------------")
+    print("\n--- SECTION 4: Intermediate Patterns ---")
 
-    # 4.1 Functions: Definition, Parameters, Return Values
-    # Functions encapsulate reusable blocks of code.
-    # Type hints improve code readability and help with static analysis.
-
-    def greet_user(name: str, message: str = "Hello") -> str:
+    # 4.1 Functions with Type Hints and Return Values
+    # WHY: Functions encapsulate reusable blocks of code. Type hints improve readability
+    #      and allow static analysis tools to catch errors early.
+    def calculate_area(length: float, width: float) -> float:
         """
-        Greets a user with a personalized message.
-
+        Calculates the area of a rectangle.
         Args:
-            name (str): The name of the user to greet.
-            message (str, optional): The greeting message. Defaults to "Hello".
-
+            length: The length of the rectangle.
+            width: The width of the rectangle.
         Returns:
-            str: The complete greeting string.
+            The calculated area as a float.
         """
-        return f"{message}, {name}!"
+        return length * width                         # Return the product of length and width
 
-    print("\n--- Function Examples ---")
-    # Calling the function with required and default arguments
-    greeting1: str = greet_user("Charlie") # Call with only 'name'
-    print(f"Greeting 1: {greeting1}")
-    # → Greeting 1: Hello, Charlie!
+    area1: float = calculate_area(5.0, 3.0)           # Call the function with float arguments
+    print(f"Area of 5x3 rectangle: {area1}")          # Display the calculated area
+    # → Area of 5x3 rectangle: 15.0
 
-    # Calling the function with both required and optional arguments
-    greeting2: str = greet_user("Diana", "Good morning") # Call with 'name' and 'message'
-    print(f"Greeting 2: {greeting2}")
-    # → Greeting 2: Good morning, Diana!
+    area2: float = calculate_area(7.2, 4.1)           # Call with different arguments
+    print(f"Area of 7.2x4.1 rectangle: {area2:.2f}")  # Display with 2 decimal places
+    # → Area of 7.2x4.1 rectangle: 29.52
 
-    # Using keyword arguments for clarity
-    greeting3: str = greet_user(message="Hi there", name="Eve") # Keyword arguments can be out of order
-    print(f"Greeting 3 (keyword args): {greeting3}")
-    # → Greeting 3 (keyword args): Hi there, Eve!
-
-    # Function with multiple return values (returned as a tuple)
-    def calculate_stats(numbers: list[int]) -> tuple[int, float, int]:
+    # 4.2 Functions with Default Arguments
+    # WHY: Default arguments allow functions to be called with fewer arguments,
+    #      providing flexibility and reducing boilerplate.
+    def greet(name: str, message: str = "Hello") -> str:
         """
-        Calculates the sum, average, and maximum of a list of integers.
-
+        Greets a person with a customizable message.
         Args:
-            numbers (list[int]): A list of integers.
-
+            name: The name of the person to greet.
+            message: The greeting message (defaults to "Hello").
         Returns:
-            tuple[int, float, int]: A tuple containing (sum, average, max_value).
-                                     Returns (0, 0.0, 0) for an empty list.
+            A formatted greeting string.
         """
-        if not numbers:                   # Handle empty list case
-            return 0, 0.0, 0
-        total_sum: int = sum(numbers)     # Calculate sum using built-in function
-        average: float = total_sum / len(numbers) # Calculate average
-        max_value: int = max(numbers)     # Calculate max using built-in function
-        return total_sum, average, max_value # Return as a tuple
+        return f"{message}, {name}!"                  # Return the formatted greeting
 
-    data_points: list[int] = [10, 20, 30, 40, 50] # List of numbers for stats
-    total, avg, maximum = calculate_stats(data_points) # Unpack the returned tuple
-    print(f"\nStats for {data_points}:")
-    print(f"  Sum: {total}, Average: {avg}, Max: {maximum}")
-    # →   Sum: 150, Average: 30.0, Max: 50
-
-    # 4.2 List Comprehensions
-    # A concise way to create lists.
-    # WHY: More readable and often more efficient than traditional for loops for list creation.
-    numbers_for_comp: list[int] = [1, 2, 3, 4, 5] # Original list of numbers
-
-    # Traditional loop approach (commented out for comparison)
-    # squared_numbers_loop = []
-    # for num in numbers_for_comp:
-    #     squared_numbers_loop.append(num * num)
-
-    # ✅ Preferred/Pythonic: List comprehension
-    squared_numbers_comp: list[int] = [num * num for num in numbers_for_comp] # Square each number
-    print(f"\nOriginal numbers: {numbers_for_comp}")
-    print(f"Squared numbers (list comprehension): {squared_numbers_comp}")
-    # → Squared numbers (list comprehension): [1, 4, 9, 16, 25]
-
-    # List comprehension with a condition
-    even_numbers: list[int] = [num for num in numbers_for_comp if num % 2 == 0] # Filter for even numbers
-    print(f"Even numbers (list comprehension with condition): {even_numbers}")
-    # → Even numbers (list comprehension with condition): [2, 4]
-
-    # 4.3 Error Handling (`try-except`)
-    # Gracefully handle runtime errors (exceptions).
-    print("\n--- Error Handling Example ---")
-
-    def divide_numbers(numerator: int | float, denominator: int | float) -> float | str:
-        """
-        Divides two numbers, handling division by zero.
-
-        Args:
-            numerator (int | float): The number to be divided.
-            denominator (int | float): The divisor.
-
-        Returns:
-            float | str: The result of the division, or an error message if division by zero occurs.
-        """
-        try:
-            result: float = numerator / denominator # Attempt the division
-            return result
-        except ZeroDivisionError:               # Catch specific error type
-            return "Error: Cannot divide by zero!"
-        except TypeError:                       # Catch another specific error type
-            return "Error: Invalid input types for division!"
-        except Exception as e:                  # Catch any other unexpected error
-            return f"An unexpected error occurred: {e}"
-
-    print(f"10 / 2 = {divide_numbers(10, 2)}")
-    # → 10 / 2 = 5.0
-    print(f"5 / 0 = {divide_numbers(5, 0)}")
-    # → 5 / 0 = Error: Cannot divide by zero!
-    print(f"'hello' / 2 = {divide_numbers('hello', 2)}") # This will hit TypeError
-    # → 'hello' / 2 = Error: Invalid input types for division!
-
-
-# ═══════════════════════════════════════════════════════════════
-# SECTION 5: Pythonic Idioms: The Right Way vs The Naive Way
-# ═══════════════════════════════════════════════════════════════
-
-def section_5_pythonic_idioms() -> None:
-    """
-    Demonstrates common Pythonic approaches for cleaner and more efficient code.
-    """
-    print("\nSECTION 5: Pythonic Idioms: The Right Way vs The Naive Way")
-    print("--------------------------------------------------")
-
-    #
+    greeting1: str = greet("Charlie")                 # Call with only required argument (uses default message)
+    print(greeting1)                                  # Display the
